@@ -12,7 +12,7 @@ interface ListProps {
     list:Project[],
     users:User[],
 }
-export const List = ({users,list}:Li stProps)=>{
+export const List = ({users,list}:ListProps)=>{
     return <table>
         <thead>
             <tr>名称</tr>
