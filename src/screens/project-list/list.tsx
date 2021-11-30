@@ -15,16 +15,16 @@ interface ListProps {
 export const List = ({users,list}:ListProps)=>{
     return <table>
         <thead>
-            <tr>名称</tr>
-            <tr>负责人</tr>
+            <tr>
+                <th>名称</th>
+                <th>负责人</th>
+            </tr>
         </thead>
         <tbody>
             {
-                list.map( item => <tr key={item.id}>
+                list.map(item => <tr key={item.id}>
                     <td>{item.name}</td>
-                    <td>
-                        {users.find(user => user.id == item.personId)?.name || ''}
-                    </td>
+                    <td>{users.find(user => user.id ===  item.personId)?.name || ''}</td>
                 </tr>)
             }
         </tbody>
