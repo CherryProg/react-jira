@@ -6,14 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import {loadDevTools} from 'jira-dev-tool';
 
 
-// loadDevTools(()=>{
+loadDevTools(()=>{
   ReactDOM.render(
     <React.StrictMode>
       <App />
     </React.StrictMode>,
     document.getElementById('root')
   );
-// })
+})
 
 
 
