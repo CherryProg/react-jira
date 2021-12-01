@@ -23,7 +23,7 @@ export const useMount = (callback:()=>void)=>{
     },[])
 }
 
-export const useDebounce = (value:unknown, delay?:number):any => {
+export const useDebounce = <V>(value:V, delay?:number) => {
     // 定义一个内部state hook来对传入进来的参数value进行管理
     const [debounceValue, setDebounceValue] = useState(value);
     // 每当输入框传入的value变化时，Effect hook就会设置一个定时器，
@@ -34,4 +34,19 @@ export const useDebounce = (value:unknown, delay?:number):any => {
         return () => clearTimeout(timeout)
     }, [value, delay])
     return debounceValue;
+}
+
+export const useArray = <T> (initialArray:T[]) => {
+    const [value,setValue] = useState(initialArray)
+    return {
+        value,
+        setValue,
+        add:(item:T) => setValue([...value,item]),
+        clear:()=> setValue([]),
+        removeIndex:(index:number) => {
+            const copy = [...value]
+            copy.splice(index,1)
+            setValue(copy)
+        }
+    }
 }
