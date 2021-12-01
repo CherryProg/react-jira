@@ -6124,6 +6124,13 @@ immer@8.0.1:
   resolved "https://registry.npmmirror.com/immer/download/immer-8.0.1.tgz#9c73db683e2b3975c424fb0572af5889877ae656"
   integrity sha1-nHPbaD4rOXXEJPsFcq9YiYd65lY=
 
+imooc-jira-tool@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/imooc-jira-tool/download/imooc-jira-tool-1.0.3.tgz#1260bacb03124978d61cddece99142703fdb1595"
+  integrity sha1-EmC6ywMSSXjWHN3s6ZFCcD/bFZU=
+  dependencies:
+    jira-dev-tool "^1.1.0"
+
 import-cwd@^2.0.0:
   version "2.1.0"
   resolved "https://registry.nlark.com/import-cwd/download/import-cwd-2.1.0.tgz#aa6cf36e722761285cb371ec6519f53e2435b0a9"
@@ -7184,7 +7191,7 @@ jest@26.6.0:
     import-local "^3.0.2"
     jest-cli "^26.6.0"
 
-jira-dev-tool@^1.7.61:
+jira-dev-tool@^1.1.0, jira-dev-tool@^1.7.61:
   version "1.7.61"
   resolved "https://registry.npmmirror.com/jira-dev-tool/download/jira-dev-tool-1.7.61.tgz#32477c1e0f9f9f46ad5ffd61409ac05a1422c17c"
   integrity sha1-Mkd8Hg+fn0atX/1hQJrAWhQiwXw=
