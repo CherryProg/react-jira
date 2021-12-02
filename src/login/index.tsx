@@ -3,23 +3,10 @@ import React, { FormEvent } from "react";
  
 export const LoginScreen = () => {
 
-    const {login, user} = useAuth()
-    // const login = (param:{username:string,password:string}) =>{
-    //     //请求接口
-    //     fetch(`http://localhost:3001/register`,{
-    //         method:'POST',
-    //         headers:{
-    //             'Content-Type':'application/json'
-    //         },
-    //         body:JSON.stringify(param)
-    //     }).then(async response => {
-    //         if (response.ok) { 
-                
-    //         } 
-    //     })
-    // }
+    const {login, user} = useAuth() 
     
     const handleSubmit = (event:FormEvent<HTMLFormElement>) => {
+        console.log(event) 
         event.preventDefault();
         const username = (event.currentTarget.elements[0] as HTMLInputElement).value
         const password = (event.currentTarget.elements[1] as HTMLInputElement).value
@@ -35,8 +22,8 @@ export const LoginScreen = () => {
         </div>
         <div>
             <label htmlFor="passward">密码</label>
-            <input type="text" id={'passward'}/>
+            <input type="passward" id={'passward'}/>
         </div>
-        <button type={"submit"}>注册</button>
+        <button type={"submit"}>登录</button>
     </form>
 }
