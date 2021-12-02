@@ -19,6 +19,7 @@ AuthContext.displayName = 'AuthContext'
 export const AuthProvider = ({children}:{children:ReactNode}) => {
     const [user,setUser] = useState<User | null>(null)
 
+    // 函数式编程 point free
     const login = (form:AuthForm) => auth.login(form).then(setUser)
 
     const register = (form:AuthForm) => auth.register(form).then(setUser)

@@ -6,7 +6,6 @@ export const LoginScreen = () => {
     const {login, user} = useAuth() 
     
     const handleSubmit = (event:FormEvent<HTMLFormElement>) => {
-        console.log(event) 
         event.preventDefault();
         const username = (event.currentTarget.elements[0] as HTMLInputElement).value
         const password = (event.currentTarget.elements[1] as HTMLInputElement).value

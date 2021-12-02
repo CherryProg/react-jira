@@ -11,7 +11,7 @@ function App() {
       {/* <TsReactTest/>  */}
       {/* <ProjectListScreen/> */}
       <LoginScreen/>
-    </div>
+    </div> 
   );
 }
 
