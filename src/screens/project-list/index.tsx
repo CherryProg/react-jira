@@ -1,4 +1,4 @@
-import React  from 'react'  
+import React  from 'react'
 import { SearchPancel } from "./serch-panel";
 import { List } from "./list";
 import { useEffect, useState } from "react";
