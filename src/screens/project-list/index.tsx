@@ -4,6 +4,7 @@ import { List } from "./list";
 import { useEffect, useState } from "react";
 import { cleanObject, useMount, useDebounce } from '../../utils';
 import * as qs from "qs";
+import { http, useHttp } from 'utils/http';
 
 // const apiUrl = process.env.REACT_APP_API_URL
 // console.log(apiUrl)
@@ -24,23 +25,16 @@ export const ProjectListScreen = () =>{
 
     const debounceParam = useDebounce(param, 200)
 
+    // http hock
+    const client = useHttp()
+
     // param变化的时候请求项目列表的接口  加一个依赖 意思是param改变的时候进行获取接口
     useEffect(() => {
-        //请求接口
-        fetch(`http://localhost:3001/projects?${qs.stringify(cleanObject(debounceParam))}`).then(async response => {
-            if (response.ok) { 
-                // json()返回一个被解析为J SON格式的promise对象
-                setList(await response.json())
-            }
-        })
+        client('projects',{data:cleanObject(debounceParam)}).then(setList)
     }, [debounceParam])
 
     useMount(() => {
-        fetch(`http://localhost:3001/users`).then(async response => {
-            if (response.ok) {
-                setUsers(await response.json())
-            }
-        })
+        client('users').then(setUsers)
     })
 
     return <div>
