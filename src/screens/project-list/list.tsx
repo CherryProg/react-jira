@@ -1,3 +1,5 @@
+import { Table } from 'antd'
+import { title } from 'process'
 import React  from 'react'
 import { User } from './serch-panel'
 
@@ -7,26 +9,27 @@ interface Project {
     personId:string,
     pin:boolean,
     organization:string
-}
+} 
 interface ListProps {
     list:Project[],
     users:User[],
 }
 export const List = ({users,list}:ListProps)=>{
-    return <table>
-        <thead>
-            <tr>
-                <th>名称</th>
-                <th>负责人</th>
-            </tr>
-        </thead>
-        <tbody>
-            {
-                list.map(item => <tr key={item.id}>
-                    <td>{item.name}</td>
-                    <td>{users.find(user => user.id ===  item.personId)?.name || ''}</td>
-                </tr>)
+    return (
+        <Table pagination={false} rowKey={item=>item.id} columns={[{
+            title:'名称',
+            dataIndex:'name',
+            sorter:(a,b) => a.name.localeCompare(b.name)
+        },{
+            title:'负责人',
+            render(value,project){
+                return <span>
+                    {users.find(user => user.id ===  project.personId)?.name || '未知'}
+                </span>
             }
-        </tbody>
-    </table>
+        },
+        ]} dataSource={list}>
+        </Table>
+        // <div></div>
+    )
 }

@@ -1,3 +1,4 @@
+import { Input, Select,  } from 'antd';
 import React  from 'react'
 import {useState,useEffect} from 'react';
 
@@ -21,20 +22,23 @@ interface SearchPancelProps {
 export const  SearchPancel = ({users,param,setParam}:SearchPancelProps)=>{
     return <form>
         <div>
-            <input value={param.name} onChange={ e => setParam({
+            <Input value={param.name} onChange={ e => setParam({
                 ...param,
-                name:e.target.value
+                name:e.target.value  
             })}/>
-            <select value={param.personId} onChange={ e => setParam({
-                ...param,
-                personId:e.target.value
-            })}>
-                <option>负责人</option>
+            <Select 
+                value={param.personId} 
+                onChange={ value => setParam({
+                    ...param,
+                    personId:value
+                })
+            }>
+                <Select.Option value={""}>负责人</Select.Option>
                 {
-                    users.map(user => <option value={user.id} key={user.id}>{user.name}</option>)
+                    users.map((user:User) => <Select.Option value={user.id} key={user.id}>{user.name}</Select.Option>)
                 }
 
-            </select>
+            </Select>
         </div>
     </form>
 } 
