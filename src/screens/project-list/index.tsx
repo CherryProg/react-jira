@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import React  from 'react'
 import { SearchPancel } from "./serch-panel";
 import { List } from "./list";
@@ -31,14 +32,20 @@ export const ProjectListScreen = () =>{
     // param变化的时候请求项目列表的接口  加一个依赖 意思是param改变的时候进行获取接口
     useEffect(() => {
         client('projects',{data:cleanObject(debounceParam)}).then(setList)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debounceParam])
 
     useMount(() => {
         client('users').then(setUsers)
     })
 
-    return <div>
+    return <Container>
+        <h1>项目列表</h1>
         <SearchPancel users={users || []} param={param} setParam={setParam}></SearchPancel>
         <List users={users || []} list={list || []}></List>
-    </div>
+    </Container>
 }
+
+const Container = styled.div`
+  padding: 3.2rem;
+`;

@@ -1,4 +1,5 @@
-import { Input, Select,  } from 'antd';
+/** @jsxImportSource @emotion/react */
+import { Input, Select,  Form} from 'antd';
 import React  from 'react'
 import {useState,useEffect} from 'react';
 
@@ -20,25 +21,29 @@ interface SearchPancelProps {
 }
 
 export const  SearchPancel = ({users,param,setParam}:SearchPancelProps)=>{
-    return <form>
-        <div>
-            <Input value={param.name} onChange={ e => setParam({
-                ...param,
-                name:e.target.value  
-            })}/>
-            <Select 
-                value={param.personId} 
-                onChange={ value => setParam({
+    return (
+        <Form css={{ marginBottom: '2rem' }} layout={'inline'}>
+            <Form.Item>
+                <Input value={param.name} onChange={ e => setParam({
                     ...param,
-                    personId:value
-                })
-            }>
-                <Select.Option value={""}>负责人</Select.Option>
-                {
-                    users.map((user:User) => <Select.Option value={user.id} key={user.id}>{user.name}</Select.Option>)
-                }
+                    name:e.target.value  
+                })}/>
+            </Form.Item>
+            <Form.Item>
+                <Select 
+                    value={param.personId} 
+                    onChange={ value => setParam({
+                        ...param,
+                        personId:value
+                    })
+                }>
+                    <Select.Option value={""}>负责人</Select.Option>
+                    {
+                        users.map((user:User) => <Select.Option value={user.id} key={user.id}>{user.name}</Select.Option>)
+                    }
 
-            </Select>
-        </div>
-    </form>
+                </Select>
+            </Form.Item>
+        </Form>
+    )
 } 
