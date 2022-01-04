@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { Input, Select,  Form} from 'antd';
 import React  from 'react'
-import {useState,useEffect} from 'react';
 
 export interface User {
     id:string,

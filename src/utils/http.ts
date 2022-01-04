@@ -1,10 +1,8 @@
 import * as auth from 'auth-provider';
 import { useAuth } from 'context/auth-context';
 import qs from 'qs'
-import { config, string } from 'yargs';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-
 interface Config extends RequestInit {
     token?:string,
     data?:object
@@ -45,16 +43,16 @@ export const useHttp = () => {
     return (...[endpoint,config]:Parameters<typeof http>) => http(endpoint,{...config,token:user?.token})
 }
 
-type Person = {
-    name:string,
-    age:number
-}
-type PersonKeys = keyof Person
+// type Person = {
+//     name:string,
+//     age:number
+// }
+// type PersonKeys = keyof Person
 
-const xiaoming:Partial<Person> = {age:18}
-type Partial<T> = {
-    [P in keyof T]?: T[P];
-};
+// const xiaoming:Partial<Person> = {age:18}
+// type Partial<T> = {
+//     [P in keyof T]?: T[P];
+// };
 
-const shenmiren1 : Omit<Person,'name'> = {age:18} 
-type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+// const shenmiren1 : Omit<Person,'name'> = {age:18} 
+// type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
