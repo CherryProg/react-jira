@@ -1,5 +1,5 @@
-import { useAuth } from "context/auth-context";
 import React from "react";
+import { useAuth } from "context/auth-context";
 import { Form, Input } from 'antd'
 import { LongButton } from "unauthenticated-app/index";
 import { useAsync } from "utils/use-async";
@@ -19,7 +19,6 @@ export const RegisterScreen = ({onError}: {onError: (error:any) => void}) => {
             await run(register(values))
         } catch(e){
             onError(e)
-            // console.log(e)
         }
     }
 

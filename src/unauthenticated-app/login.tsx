@@ -5,7 +5,7 @@ import { LongButton } from "unauthenticated-app/index";
 import { useAsync } from "utils/use-async";
  
 export const LoginScreen = ({onError}: {onError: (error:any) => void}) => {
-
+    // 通过useAuth获取user用户信息
     const {login} = useAuth() 
     const {run,isLoading} = useAsync(undefined,{throwOnError:true})
     
