@@ -14,6 +14,23 @@ export const handleUserResponse = ({user} : {user:User}) => {
 }
 
 // API
+// 注册
+export const register = (data: { username: string; password: string }) => {
+    return fetch(`${apiUrl}/register`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    }).then(async response => {
+        if (response.ok) {
+            return handleUserResponse(await response.json());
+        } else {
+            return Promise.reject(await response.json());
+        }
+    });
+};
+
 // 登录
 export const login = (data: { username: string; password: string }) => {
     return fetch(`${apiUrl}/login`, {
@@ -29,23 +46,6 @@ export const login = (data: { username: string; password: string }) => {
             return handleUserResponse(await response.json());
         } else { 
             // 直接抛出个错
-            return Promise.reject(await response.json());
-        }
-    });
-};
-
-// 注册
-export const register = (data: { username: string; password: string }) => {
-    return fetch(`${apiUrl}/register`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    }).then(async response => {
-        if (response.ok) {
-            return handleUserResponse(await response.json());
-        } else {
             return Promise.reject(await response.json());
         }
     });
