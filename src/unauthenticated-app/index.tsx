@@ -6,21 +6,22 @@ import styled from '@emotion/styled'
 import left from 'assets/left.svg';
 import logo from 'assets/logo.svg';
 import right from 'assets/right.svg';
+import { useDocumentTitle } from "utils"
 // 类型声明文件和库本身是分离的,库使用js写的
-import {Helmet} from "react-helmet"; 
+// import {Helmet} from "react-helmet"; 
 
 // 入口文件
 export const UnauthenticatedApp = () => {
     // isRegister用来在login和register两个状态之间切换，默认是登录界面
     const [isRegister,setIsRegister] = useState(false);
     const [error, setError] = useState<Error | null>(null);
+    useDocumentTitle('请登录或注册以继续')
     return (
         <Container>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>My Title</title>
-                <link rel="canonical" href="http://mysite.com/example" />
-            </Helmet>
+            {/* 动态修改title */}
+            {/* <Helmet>
+                <title>请登录或注册以继续</title>
+            </Helmet> */}
             <Header />
             <Background />
             <Button onClick={()=>{
